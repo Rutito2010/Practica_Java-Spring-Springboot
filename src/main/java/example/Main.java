@@ -3,12 +3,16 @@ package example;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
+
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context= new ClassPathXmlApplicationContext("beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
-        Saludo imprimir = (Saludo) context.getBean("saludo");
+       NotificacionService notificacion = (NotificacionService) context.getBean(NotificacionService.class);
 
-        System.out.println( imprimir.imprimirSaludo());
+       UserService user= (UserService) context.getBean(UserService.class);
+
+        System.out.println(user.notificacionService.saludo());
     }
 }
